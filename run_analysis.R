@@ -90,10 +90,20 @@ rm(featurestablefile,
    allfeaturesnames
    )
 
-dup <- alldata[,duplicated(names(alldata))]
+#dup <- alldata[,duplicated(names(alldata))]
+
 
 uniquedata <- alldata[,!duplicated(names(alldata))]
-uniquedata %>%
+meansandstds <- uniquedata %>%
   select(contains("mean"), contains("std"), subject, activitylabel)
 
+meansandstds
+
+
+#Create second data frame giving mean of each variable for each activity and subject
+groupedmeans <- meansandstds %>%
+  group_by(activitylabel, subject) %>%
+  summarise_all(mean)
+
+groupedmeans
 
