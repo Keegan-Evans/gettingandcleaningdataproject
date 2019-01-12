@@ -106,4 +106,5 @@ groupedmeans <- meansandstds %>%
   summarise_all(mean)
  
 groupedmeans
+write.table(groupedmeans,file = "Step5KeeganEvans", row.names = FALSE)
 
