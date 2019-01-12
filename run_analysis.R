@@ -95,7 +95,7 @@ rm(featurestablefile,
 
 uniquedata <- alldata[,!duplicated(names(alldata))]
 meansandstds <- uniquedata %>%
-  select(contains("mean"), contains("std"), subject, activitylabel)
+  select(subject, activitylabel,contains("mean"), contains("std"))
 
 meansandstds
 
@@ -104,6 +104,6 @@ meansandstds
 groupedmeans <- meansandstds %>%
   group_by(activitylabel, subject) %>%
   summarise_all(mean)
-
+ 
 groupedmeans
 
